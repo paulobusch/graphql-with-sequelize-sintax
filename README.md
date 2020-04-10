@@ -15,7 +15,7 @@
   - Registros / Ações: Midware com as regras próprias de cada papel / usuário | white list
   
 ## Exemplos para suporte
-`POST
+```POST
 {
     "transaction": true,
     "queries": [
@@ -119,4 +119,4 @@
         }
     ]
 }
-`
+```
