@@ -1,0 +1,26 @@
+{
+  "name": "graphql-with-sequelize-sintax",
+  "version": "1.0.0",
+  "description": "- Centralizar em uma classe as validações de campo, e atributos que não podem ser consultados\r   - Padrão para validar acesso (ByPass) a registros\r   - Demais funcionalidades podem seguir o padrão REST (Upload / Downlod / Autenticação)\r   - Consultar apenas o que foi solicitado (campos, registros)",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "nodemon": "^2.0.3",
+    "sucrase": "^3.13.0",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "dev": "tsc src/server.ts",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulobusch/graphql-with-sequelize-sintax.git"
+  },
+  "author": "paulo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulobusch/graphql-with-sequelize-sintax/issues"
+  },
+  "homepage": "https://github.com/paulobusch/graphql-with-sequelize-sintax#readme"
+}

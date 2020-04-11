@@ -1,3 +1,5 @@
+# Arquitetura de API com GraphQL, NodeJs e MySql 
+
 # GraphQL com a sintax do ORM Sequelize
 ## Considerações
   - Centralizar em uma classe as validações de campo, e atributos que não podem ser consultados
@@ -24,7 +26,7 @@
             "users": {
                 "fields": ["id",["name", "full_name"],"email"]
             }
-        }, 
+        },
         // where conditions
         {
             "users": {
@@ -89,14 +91,14 @@
     ],
     "mutations": [
         {
-            "user-insert": {
+            "user": {
                 "id": 1,
                 "name": "paulo",
                 "email": "teste@teste.com"
             }
         },
         {
-            "user-update": {
+            "user": {
                 "filter": { "id": 1 },
                 "values": {
                     "name": "Paulo Ricardo",
@@ -105,7 +107,7 @@
             }
         },
         {
-            "user-update": {
+            "user": {
                 "filter": { "id": 1 },
                 "values": {
                     "removed": true
@@ -113,7 +115,7 @@
             }
         },
         {
-            "user-delete": {
+            "user": {
                 "filter": { "id": 1 }
             }
         }
