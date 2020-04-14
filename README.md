@@ -1,4 +1,18 @@
 # GraphQL com a sintax do ORM Sequelize
+## Considerações
+  - Centralizar em uma classe as validações de campo, e atributos que não podem ser consultados com o uso de decoradores.
+  - Padrão para validar acesso (validadores) a registros
+  - Demais funcionalidades podem seguir o padrão REST (Upload / Downlod / Autenticação)
+  - Consultar apenas o que foi solicitado (campos, registros)
+
+## Opções do framework
+  - queries: Um array com as entidades e campos a serem consultados
+  - mutations: Um array com todas as as alterações nas entidades
+  - transaction: Um booleano que especifica se as operações enviadas devem ser computadas em uma transação pelo framework
+
+## Restrição de acesso: 
+  - Campos: Será configurado na classe da entidade os campos que não podem ser acessados | black list
+  - Registros / Ações: Midware com as regras próprias de cada papel / usuário | white list
 ## REST (Múltiplos canais)
     - C = POST
     - R = GET 
@@ -29,21 +43,6 @@
     A responsabilidade de consulta seria extendida para o front-end,
     ficando no banckend a configuração e permissões.
     Desse modo uma a conhecida controller do backend poderia ser implementada no front-end, como um Store, que a medida que mutations vão sendo submetidas, vai salvando no LocalStorage do usuário, e um commando especial emvia tudo para o servidor (commit), tornando mais simples o gerenciamento de estado da aplicação e possível sincronização em desconexão;
-
-## Considerações
-  - Centralizar em uma classe as validações de campo, e atributos que não podem ser consultados com o uso de decoradores.
-  - Padrão para validar acesso (ByPass) a registros
-  - Demais funcionalidades podem seguir o padrão REST (Upload / Downlod / Autenticação)
-  - Consultar apenas o que foi solicitado (campos, registros)
-
-## Opções do framework
-  - queries: Um array com as entidades e campos a serem consultados
-  - mutations: Um array com todas as as alterações nas entidades
-  - transaction: Um booleano que especifica se as operações enviadas devem ser computadas em uma transação pelo framework
-
-## Restrição de acesso: 
-  - Campos: Será configurado na classe da entidade os campos que não podem ser acessados | black list
-  - Registros / Ações: Midware com as regras próprias de cada papel / usuário | white list
   
 ## Exemplos para suporte
 ```POST
