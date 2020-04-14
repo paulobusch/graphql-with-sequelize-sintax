@@ -3,15 +3,9 @@
   "version": "1.0.0",
   "description": "- Centralizar em uma classe as validações de campo, e atributos que não podem ser consultados\r   - Padrão para validar acesso (ByPass) a registros\r   - Demais funcionalidades podem seguir o padrão REST (Upload / Downlod / Autenticação)\r   - Consultar apenas o que foi solicitado (campos, registros)",
   "main": "index.js",
-  "devDependencies": {
-    "@types/node": "^13.11.1",
-    "nodemon": "^2.0.3",
-    "sucrase": "^3.13.0",
-    "typescript": "^3.8.3"
-  },
   "scripts": {
-    "dev": "tsc src/server.ts",
-    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+    "dev": "nodemon src/server.ts",
+    "build": "tsc --build"
   },
   "repository": {
     "type": "git",
@@ -22,5 +16,27 @@
   "bugs": {
     "url": "https://github.com/paulobusch/graphql-with-sequelize-sintax/issues"
   },
-  "homepage": "https://github.com/paulobusch/graphql-with-sequelize-sintax#readme"
+  "homepage": "https://github.com/paulobusch/graphql-with-sequelize-sintax#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^13.11.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "decapi": "^0.8.20",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "sequelize": "^5.21.6"
+  }
 }
