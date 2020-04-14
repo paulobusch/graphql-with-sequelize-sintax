@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ObjectType, Field, ArrayField } from "decapi";
 import { User } from "../resolvers/users/users.schema";
 
@@ -12,4 +13,11 @@ export class Paginated<Type> {
         this.totalRows = totalRows;
         this.rows = rows;
     }
+=======
+export class Paginated<Type> {
+    constructor(
+        public totalRows: Number,
+        public rows: Type[]
+    ) { }
+>>>>>>> bbdfc99de7633614789b7b31cc9e26506cd48018
 }

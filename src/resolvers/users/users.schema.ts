@@ -1,4 +1,5 @@
 import { ObjectType, Field, Arg } from "decapi";
+<<<<<<< HEAD
 import { Table, Column, PrimaryKey, Model, AllowNull, Unique, CreatedAt, UpdatedAt, DeletedAt, DataType } from "sequelize-typescript";
 
 @Table
@@ -44,5 +45,25 @@ export class User extends Model<User> {
     remove() {
         this.updated = new Date();
         this.deleted = new Date();
+=======
+
+@ObjectType()
+export class User {
+    @Field() id: String;
+    @Field() name: String;
+    @Field() email: String;
+    @Field() age: Number;
+
+    constructor(
+        id: string,
+        name: string,
+        email: string,
+        age: number
+    ) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.age = age;
+>>>>>>> bbdfc99de7633614789b7b31cc9e26506cd48018
     }
 }
