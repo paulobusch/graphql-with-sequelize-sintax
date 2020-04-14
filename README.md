@@ -10,11 +10,11 @@
     - queries = GET 
 
 ## Melhorias possíveis do modelo GraphQl
-    - 1: Evitar o carregamento de campos desnecessários do BD
-    - 2: Uma estrutura base, com crud default
+    - 1º: Evitar o carregamento de campos desnecessários do BD
+    - 2º: Uma estrutura base, com crud default
 
-## 1: Considerando os campos retornados na execução das consultas
-## 2: Padronizar a criação de rotas, ex:
+### 1º Objetivo: Considerando os campos retornados na execução das consultas
+### 2º Objetivo: Padronizar a criação de rotas, ex:
     Entidade users:
         - user        = Um usuário
         - users       = Uma lista de usuários
@@ -72,12 +72,18 @@
 ```
     required
     writeonly
-    writecast
     readonly
     length
     unique
     regex
 ```
+
+### Tratamento de valores
+```
+    default
+    writecast
+```
+
 #### writeonly
     Um campo que não pode ser lido, apenas escrito. a senha por exemplo
 
@@ -92,7 +98,7 @@
 
 ## Entidade
 ```
-    @Entity
+    @Entity({ filter: { removed: false } })
     export class User {
         @Validators([Validators.required, Validators.length({ max: 8 })])
         id: string;
@@ -111,9 +117,13 @@
         
         @Validators([Validators.required, Validators.unique])
         birth: Date;
-        
-        @Validators([Validators.required, Validators.writeonly, Validators.writeonly, writecast(toHash(p)), Validators.length({ min: 10, max: 50 })])
+
+        @Values([Values.writecast(toHash(p))])
+        @Validators([Validators.required, Validators.writeonly, Validators.length({ min: 10, max: 50 })])
         password: string;
+        
+        @Values([Values.default(false)])
+        removed: boolean;
     }
 ```
 

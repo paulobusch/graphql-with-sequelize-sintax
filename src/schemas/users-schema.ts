@@ -19,17 +19,9 @@ export class UsersSchema {
         return await QueriesHandler.execute<User>(filter);
     }
 
-<<<<<<< HEAD
-    @Query({ type: Paginated }) 
-    async users(filters: ListUsers): Promise<Paginated<User>> { 
-        const users = await QueriesHandler.execute<Paginated<User>>(filters);
-        console.log(users);
-        return users;
-=======
     @Query({ type: [User]! }) 
     async users(filters: ListUsers): Promise<Paginated<User>> { 
         return await QueriesHandler.execute<Paginated<User>>(filters);
->>>>>>> bbdfc99de7633614789b7b31cc9e26506cd48018
     }
     
     @Mutation({ type: User })
