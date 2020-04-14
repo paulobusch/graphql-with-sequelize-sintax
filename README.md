@@ -1,5 +1,5 @@
 # GraphQL com a sintax do ORM Sequelize
-## Tradicional (Múltiplos canais)
+## REST (Múltiplos canais)
     - C = POST
     - R = GET 
     - U = PUT
