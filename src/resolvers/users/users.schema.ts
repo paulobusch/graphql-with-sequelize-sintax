@@ -1,21 +1,20 @@
 import { ObjectType, Field, Arg } from "decapi";
+import {Table, Column, Model, HasMany} from 'sequelize-typescript';
 
 @ObjectType()
-export class User {
-    @Field() id: String;
-    @Field() name: String;
-    @Field() email: String;
-    @Field() age: Number;
+@Table({ timestamps: false })
+export class User extends Model<User> {
+    @Field() id!: String;
+    @Field() name!: String;
+    @Field() email!: String;
+    @Field() birth!: Date;
 
-    constructor(
+    static instance(user: {
         id: string,
         name: string,
         email: string,
-        age: number
-    ) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.age = age;
+        birth: Date
+    }): User {
+        return Object.assign(new User(), user);       
     }
 }

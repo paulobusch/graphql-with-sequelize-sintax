@@ -48,21 +48,21 @@
 ```POST
 {
     "transaction": true,
-    "queries": [
+    "queries": {
         // apenas um usuário
-        ["user"]: [{ /* sintaxe sequelize */ }],
+        ["users-one"]: [{ /* sintaxe sequelize */ }],
 
         // lista de usuários
-        ["users"]: [{ /* sintaxe sequelize */ }]
-    ],
-    "mutations": [
-        ["user-insert"]: [{ /* propriedades do objeto */ }],
-        ["user-update"]: [{
+        ["users-list"]: [{ /* sintaxe sequelize */ }]
+    },
+    "mutations": {
+        ["users-insert"]: [{ /* propriedades do objeto */ }],
+        ["users-update"]: [{
             "values": { /* propriedades do objeto */ },
             "filter": { /* sintaxe sequelize */ } 
         }],
-        ["user-delete"]: [{ /* sintaxe sequelize */ }]
-    ]
+        ["users-delete"]: [{ /* sintaxe sequelize */ }]
+    }
 }
 ```
 
@@ -83,16 +83,16 @@
     writecast
 ```
 
-#### writeonly
+#### Writeonly
     Um campo que não pode ser lido, apenas escrito. a senha por exemplo
 
-#### writecast(() => {})
+#### Writecast(() => {})
     Conversão dos dados de entrada do cliente, a senha por exemplo, que pode ser encripada
 
 #### Unique(key?)
     Será contruída uma consulta para validar se existe outra entidade com o mesmo valor do campo, ex: (login, email)
 
-#### length({ len: , min: , max: })
+#### Length({ len: , min: , max: })
     Validador de compimento
 
 ## Entidade
@@ -102,7 +102,7 @@
         @Validators([Validators.required, Validators.length({ max: 8 })])
         id: string;
 
-        @Validators([Validators.required, Validators.regex(\[0-9]{11}\gi), Validators.length({ len: 11 })])
+        @Validators([Validators.required, Validators.regex('[0-9]{11}'), Validators.length({ len: 11 })])
         cpf: string;
 
         @Validators([Validators.required, Validators.unique, Validators.length({ max: 200 })])
@@ -129,26 +129,26 @@
 #### Exemplos de retorno
 ```
 {
-    "queries": [
+    "queries": {
         // apenas um usuário
-        ["user"]: [ /* usuários */ ],
+        ["users-one"]: [ /* usuários */ ],
 
         // lista de usuários
-        ["users"]: [ /* listas */ ]
-    ],
-    "mutations": [
-        ["user-insert"]: [{ 
+        ["users-list"]: [ /* listas */ ]
+    },
+    "mutations": {
+        ["users-insert"]: [{ 
             Validator: { ["id"]: ["required"] },
         }, 
         { }],
-        ["user-update"]: [{ 
+        ["users-update"]: [{ 
             Validator: { ["name"]: ["unique"] },
         }, 
         { }],
-        ["user-delete"]: [{ 
+        ["users-delete"]: [{ 
             Error: "not-found",  
         }, 
         { }]
-    ]
+    }
 }
 ```
